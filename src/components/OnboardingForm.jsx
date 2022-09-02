@@ -33,7 +33,7 @@ const OnboardingForm = () => {
     
 
     const stepsArray = [
-        "Rm and Distributor Details",
+        "RM and Distributor Details",
         "First Holder",
         "Gaurdian Details ",
         "Second Holder",
@@ -80,11 +80,6 @@ const OnboardingForm = () => {
                 return <div>Oops You are in a Wrong Place Go Back to Home</div>
         }
     }
-
-
-
-
-
 
   return (
    <div

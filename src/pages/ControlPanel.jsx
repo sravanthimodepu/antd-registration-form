@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ControlPanel = () => {
+function ControlPanel() {
   return (
     <div>ControlPanel</div>
   )

@@ -1,16 +1,16 @@
-import React , {useState} from 'react'
-import { BsZoomIn , BsZoomOut } from 'react-icons/bs'
-import {GrPowerReset} from 'react-icons/gr'
+import React , {useState} from 'react';
+import { BsZoomIn , BsZoomOut } from 'react-icons/bs';
+import {GrPowerReset} from 'react-icons/gr';
 
-import { BsCurrencyDollar } from 'react-icons/bs'
-import { GoPrimitiveDot } from 'react-icons/go'
-import { Pie, Button , SparkLine , OnboardingForm } from '../components'
-import pdf  from '../data/pdf.jpg'
+import { BsCurrencyDollar } from 'react-icons/bs';
+import { GoPrimitiveDot } from 'react-icons/go';
+import { Pie, Button , SparkLine , OnboardingForm } from '../components';
+import pdf  from '../data/pdf.jpg';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
-import { earningData , SparklineAreaData , ecomPieChartData } from '../data/dummy'
+import { earningData , SparklineAreaData , ecomPieChartData } from '../data/dummy';
 
-import { useStateContext } from '../contexts/ContextProvider'
+import { useStateContext } from '../contexts/ContextProvider';
 const InvestorOnboarding = () => {
   const {formData , setFormData} = useStateContext()
   console.log(formData)
@@ -38,7 +38,7 @@ const InvestorOnboarding = () => {
                  </div>
                   </div>
                 <div
-                className = "gap-2 m-3 p-1 bg-black  text-white dark:text-gray-200 dark:bg-secondary-dark-bg w-1/2 rounded-2xl"  style={{ maxHeight:'900px' , maxWidth :'750px' }}>
+                className = "gap-2 m-3 p-1 bg-black  text-white w-1/2 dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl"  style={{ maxHeight:'900px' , maxWidth :'400px' }}>
                   <OnboardingForm/>
                 </div> 
           </div>

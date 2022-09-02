@@ -5,12 +5,11 @@ import {Tooltip } from 'antd';
 
 import './App.css'
 import { Navbar , Footer , Sidebar , ThemeSettings } from './components'
-import { Home , InvestorOnboarding , CaptureVerification , QualityCheck ,
-        ProductionReports , ControlPanel , Tasktracker , Notes , Calender ,
-         Line , Area , Bar , Pie , Financials , Pyramid } from './pages'
+import { Home , InvestorOnboarding , DrawDown, ReductionRequest, NavEntry, NavEndorsement,TransactionEndorsement, ControlPanel, Dividend, QualityCheck, NonFinancials, QueryStatements } from './pages'
 
 
 import { useStateContext } from './contexts/ContextProvider' ; 
+// import DrawDown from './pages/DrawDown';
 const App = () => {
     const {activeMenu} = useStateContext();
     const {setActiveMenu} = useStateContext();
@@ -70,23 +69,33 @@ const App = () => {
                         <Route path= '/Home' element={<Home/>} />
                         {/* Pages*/}
                         <Route path= '/InvestorOnboarding' element={<InvestorOnboarding />} />
-                        <Route path= '/CaptureVerification' element={<CaptureVerification />} />
-                        <Route path= '/QualityCheck' element={<QualityCheck/>} />
-                        <Route path= '/ProductionReports' element={<ProductionReports/>} />
+                        <Route path= '/DrawDown' element={<DrawDown/>} />
+                        <Route path= '/ReductionRequest' element={<ReductionRequest />} />
+                        <Route path= '/NavEntry' element={<NavEntry />} />
+                        <Route path= '/NavEndorsement' element={<NavEndorsement />} />
+                        <Route path= '/TransactionEndorsement' element={<TransactionEndorsement/>} />
                         <Route path= '/ControlPanel' element={<ControlPanel/>} />
+                        <Route path= '/Dividend' element={<Dividend/>} />
+                        <Route path= '/QualityCheck' element={<QualityCheck/>} />
+                        <Route path= '/NonFinancials' element={<NonFinancials />} />
+                        <Route path= '/QueryStatements' element={<QueryStatements />} />
+
+                        {/* <Route path= '/CaptureVerification' element={<CaptureVerification />} /> */}
+                        {/* <Route path= '/ProductionReports' element={<ProductionReports/>} /> */}
+                        
                         {/* Apps */}
-                        <Route path= '/tasktracker' element={<Tasktracker/>} />
-                        <Route path= '/Notes' element={<Notes/>} />
-                        <Route path= '/Calender' element= {<Calender/>} />
+                        {/* <Route path= '/tasktracker' element={<Tasktracker/>} /> */}
+                        {/* <Route path= '/Notes' element={<Notes/>} /> */}
+                        {/* <Route path= '/Calender' element= {<Calender/>} /> */}
 
                         {/* Reports */}
-
+{/* 
                         <Route path= '/line' element={<Line/>} />
                         <Route path= '/area' element={<Area/>} />
                         <Route path= '/bar' element={<Bar/>} />
                         <Route path= '/pie' element={<Pie/>} />
                         <Route path= '/financial' element={<Financials/>} />
-                        <Route path= '/pyramid' element={<Pyramid/>} />
+                        <Route path= '/pyramid' element={<Pyramid/>} /> */}
 
 
 

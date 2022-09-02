@@ -1,14 +1,18 @@
 import React from 'react';
-import { AiOutlineCalendar, AiOutlineShoppingCart, AiOutlineAreaChart, AiOutlineBarChart, AiOutlineStock } from 'react-icons/ai';
+import { AiOutlineCalendar, AiOutlineHome, AiOutlineShoppingCart, AiOutlineAreaChart, AiOutlineBarChart, AiOutlineStock, AiOutlineDollar, AiOutlineTransaction } from 'react-icons/ai';
 import { FiShoppingBag, FiEdit, FiPieChart, FiBarChart, FiCreditCard, FiStar, FiShoppingCart } from 'react-icons/fi';
-import { BsKanban, BsBarChart, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft } from 'react-icons/bs';
+import { BsKanban, BsBarChart, BsCardChecklist, BsBoxSeam, BsCurrencyDollar, BsShield, BsChatLeft } from 'react-icons/bs';
 import { BiColorFill } from 'react-icons/bi';
+import {FcApproval} from 'react-icons/fc';
 import { IoMdContacts } from 'react-icons/io';
-import { RiContactsLine, RiStockLine } from 'react-icons/ri';
-import { MdOutlineSupervisorAccount } from 'react-icons/md';
+import {MdQueryStats} from 'react-icons/md';
+import { RiContactsLine, RiStockLine, RiStickyNoteLine } from 'react-icons/ri';
+import { MdOutlineSupervisorAccount, MdOutlinePersonalInjury, MdOutlineEditNote } from 'react-icons/md';
 import { HiOutlineRefresh } from 'react-icons/hi';
+import {TbCashBanknoteOff} from 'react-icons/tb';
 import { TiTick } from 'react-icons/ti';
-import { GiLouvrePyramid } from 'react-icons/gi';
+import { VscSourceControl } from 'react-icons/vsc';
+import { GiLouvrePyramid, GiCash, GiPayMoney } from 'react-icons/gi';
 import { GrLocation } from 'react-icons/gr';
 import avatar from './avatar.jpg';
 import avatar2 from './avatar2.jpg';
@@ -475,7 +479,7 @@ export const links = [
     links: [
       {
         name: 'Home',
-        icon: <FiShoppingBag />,
+        icon: <AiOutlineHome />,
       },
     ],
   },
@@ -485,74 +489,98 @@ export const links = [
     links: [
       {
         name: 'InvestorOnboarding',
-        icon: <AiOutlineShoppingCart />,
+        icon: <MdOutlinePersonalInjury />,
       },
       {
-        name: 'CaptureVerification',
-        icon: <IoMdContacts />,
+        name: 'DrawDown',
+        icon: <GiCash/>,
       },
       {
-        name: 'QualityCheck',
-        icon: <RiContactsLine />,
+        name: 'ReductionRequest',
+        icon: <RiStickyNoteLine />,
       },
       {
-        name: 'ProductionReports',
-        icon: <RiContactsLine />,
+        name: 'NAVEntry',
+        icon: <MdOutlineEditNote />,
+      },
+      {
+        name: 'NAVEndorsement',
+        icon: <FcApproval />,
+      },
+      {
+        name: 'TransactionEndorsement',
+        icon: <AiOutlineTransaction/>,
       },
       {
         name: 'ControlPanel',
-        icon: <RiContactsLine />,
+        icon: <VscSourceControl/>,
+      },
+      {
+        name: 'Dividend',
+        icon: <GiPayMoney />,
+      },
+      {
+        name: 'QualityCheck',
+        icon: <BsCardChecklist/>,
+      },
+      {
+        name: 'NonFinancials',
+        icon: <TbCashBanknoteOff/>,
+      },
+      {
+        name: 'QueryStatements',
+        icon: <MdQueryStats />,
       }
       
     ],
   },
-  {
-    title: 'Apps',
-    links: [
-      {
-        name: 'tasktracker',
-        icon: <AiOutlineCalendar />,
-      },
-      {
-        name: 'Notes',
-        icon: <BsKanban />,
-      },
-      {
-        name: 'Calender',
-        icon: <FiEdit />,
-      },
-    ],
-  },
-  {
-    title: 'Reports',
-    links: [
-      {
-        name: 'line',
-        icon: <AiOutlineStock />,
-      },
-      {
-        name: 'area',
-        icon: <AiOutlineAreaChart />,
-      },
+  // {
+  //   title: 'Apps',
+  //   links: [
+  //     {
+  //       name: 'tasktracker',
+  //       icon: <AiOutlineCalendar />,
+  //     },
+  //     {
+  //       name: 'Notes',
+  //       icon: <BsKanban />,
+  //     },
+  //     {
+  //       name: 'Calender',
+  //       icon: <FiEdit />,
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: 'Reports',
+  //   links: [
+  //     {
+  //       name: 'line',
+  //       icon: <AiOutlineStock />,
+  //     },
+  //     {
+  //       name: 'area',
+  //       icon: <AiOutlineAreaChart />,
+  //     },
 
-      {
-        name: 'bar',
-        icon: <AiOutlineBarChart />,
-      },
-      {
-        name: 'pie',
-        icon: <FiPieChart />,
-      },
-      {
-        name: 'financial',
-        icon: <RiStockLine />,
-      },
-      {
-        name: 'pyramid',
-        icon: <GiLouvrePyramid />,
-      },
-    ],
-  },
+  //     {
+  //       name: 'bar',
+  //       icon: <AiOutlineBarChart />,
+  //     },
+  //     {
+  //       name: 'pie',
+  //       icon: <FiPieChart />,
+  //     },
+  //     {
+  //       name: 'financial',
+  //       icon: <RiStockLine />,
+  //     },
+  //     {
+  //       name: 'pyramid',
+  //       icon: <GiLouvrePyramid />,
+  //     },
+  //   ],
+  // },
 ];
 
 export const cartData = [
