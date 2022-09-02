@@ -1,0 +1,13 @@
+export { default as AddressFirstHolder } from './AddressFirstHolder';
+export { default as BankDetails } from './BankDetails';
+export { default as CapitalContributionCommitment } from './CapitalContributionCommitment';
+export { default as FirstHolder } from './FirstHolder';
+export { default as GaurdianDetails } from './GaurdianDetails';
+export { default as Nomination } from './Nomination';
+export { default as OtherDetails } from './OtherDetails';
+export { default as SecondHolder } from './SecondHolder';
+export { default as ContactFirstHolder } from './ContactFirstHolder';
+export { default as ThirdHolder } from './ThirdHolder';
+export { default as RmDistributorDetails } from './RmDistributorDetails';
+export { default as Success } from './Success';
+export { default as FormButtons } from './FormButtons';
