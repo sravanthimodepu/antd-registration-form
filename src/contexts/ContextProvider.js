@@ -41,7 +41,7 @@ const initialOnboardingData = {
             addressLine1 : '',
             addressLine2 : '',
             pinCode : '',
-            City : '',
+            city : '',
             state : '',
             country : ''
         },
@@ -81,7 +81,7 @@ const initialOnboardingData = {
         gender: '',
         pan: '',
         cKYC: '',
-        Relationship : '',
+        relationship : '',
         modeOfHolding : '',
     },
     capitalContributionCommitment : {
@@ -93,7 +93,7 @@ const initialOnboardingData = {
         accountType: '',
         accountNumber: '',
         chequeOrDDNumber: '',
-        Amount: '',
+        amount: '',
     },
     nomination: {
         nominationPreference : '',

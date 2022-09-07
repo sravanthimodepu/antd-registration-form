@@ -38,7 +38,7 @@ const InvestorOnboarding = () => {
                  </div>
                   </div>
                 <div
-                className = "gap-2 m-3 p-1 bg-black  text-white w-1/2 dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl"  style={{ maxHeight:'900px' , maxWidth :'400px' }}>
+                className = "gap-2 m-3 p-1  bg-black  text-white w-1/2 dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl"  style={{ maxHeight:'900px' , maxWidth :'400px' }}>
                   <OnboardingForm/>
                 </div> 
           </div>

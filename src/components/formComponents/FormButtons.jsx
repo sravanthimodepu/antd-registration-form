@@ -6,6 +6,7 @@ const FormButtons = ({handleClick , step , stepsArray}) => {
         
              {/* BackButton */}
              <button
+             type='submit'
              onClick={()=>handleClick('back')} 
              className={
                ` bg-gray-300 text-slate-900 uppercase py-2 px-4 
@@ -17,6 +18,7 @@ const FormButtons = ({handleClick , step , stepsArray}) => {
                    Back
              </button>
              <button
+             type='submit'
              onClick={()=>handleClick('next')}
              className=
              {`bg-green-500 uppercase py-2 px-4 rounded-xl

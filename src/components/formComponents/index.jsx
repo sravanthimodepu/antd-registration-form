@@ -8,6 +8,6 @@ export { default as OtherDetails } from './OtherDetails';
 export { default as SecondHolder } from './SecondHolder';
 export { default as ContactFirstHolder } from './ContactFirstHolder';
 export { default as ThirdHolder } from './ThirdHolder';
-export { default as RmDistributorDetails } from './RMDistributorDetails';
+export { default as RmDistributorDetails } from './RmDistributorDetails';
 export { default as Success } from './Success';
 export { default as FormButtons } from './FormButtons';

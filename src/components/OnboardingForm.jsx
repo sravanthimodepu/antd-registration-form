@@ -53,29 +53,65 @@ const OnboardingForm = () => {
     const displayStep = (currentStep) => {
         switch (currentStep) {
             case 1:
-                return <RmDistributorDetails />
+                return <RmDistributorDetails             
+                handleClick = {handleClick}
+                step = {step}
+                stepsArray = {stepsArray}/>
             case 2:
-                return <FirstHolder />
+                return <FirstHolder 
+                handleClick = {handleClick}
+                step = {step}
+                stepsArray = {stepsArray}/>
             case 3:
-                return <GaurdianDetails />
+                return <GaurdianDetails 
+                handleClick = {handleClick}
+                step = {step}
+                stepsArray = {stepsArray}/>
             case 4:
-                return <SecondHolder />
+                return <SecondHolder 
+                handleClick = {handleClick}
+                step = {step}
+                stepsArray = {stepsArray}/>
             case 5:
-                return <ThirdHolder />
+                return <ThirdHolder 
+                handleClick = {handleClick}
+                step = {step}
+                stepsArray = {stepsArray}/>
             case 6:
-                return <AddressFirstHolder />
+                return <AddressFirstHolder 
+                handleClick = {handleClick}
+                step = {step}
+                stepsArray = {stepsArray}/>
             case 7:
-                return <ContactFirstHolder />
+                return <ContactFirstHolder 
+                handleClick = {handleClick}
+                step = {step}
+                stepsArray = {stepsArray}/>
             case 8:
-                return <CapitalContributionCommitment />
+                return <CapitalContributionCommitment 
+                handleClick = {handleClick}
+                step = {step}
+                stepsArray = {stepsArray}/>
             case 9:
-                return <Nomination />
+                return <Nomination 
+                handleClick = {handleClick}
+                step = {step}
+                stepsArray = {stepsArray}/>
             case 10:
-                return <BankDetails />
+                return <BankDetails 
+                handleClick = {handleClick}
+                step = {step}
+                stepsArray = {stepsArray}/>
             case 11:
-                return <OtherDetails />
+                return <OtherDetails 
+                handleClick = {handleClick}
+                step = {step}
+                stepsArray = {stepsArray}/>
             case 12:
-                return <Success />
+                return <Success 
+                handleClick = {handleClick}
+                step = {step}
+                stepsArray = {stepsArray}/>
             default:
                 return <div>Oops You are in a Wrong Place Go Back to Home</div>
         }
@@ -86,16 +122,16 @@ const OnboardingForm = () => {
    className=' border-1 border-red-500 flex flex-col text-center items-center'>       
             <h1
             style={{fontSize: '1.5vw'}}
-            className=''>
+            className='text-white'>
             {stepsArray[step-1]}</h1>
             {displayStep(step)}
-            <div
+            {/* <div
             className={`flex justify-between w-1/2 m-6    ${step === stepsArray.length ? 'hidden': ''}`}>
             <FormButtons
             handleClick = {handleClick}
             step = {step}
             stepsArray = {stepsArray}/>
-            </div>
+            </div> */}
     </div>
   )
 }
