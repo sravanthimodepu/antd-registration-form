@@ -35,8 +35,6 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
                 contactDetails_twitter : formData.firstHolder.contactDetails.twitter || null,
                 contactDetails_facebook : formData.firstHolder.contactDetails.facebook || null,
                 contactDetails_linkedIn : formData.firstHolder.contactDetails.linkedIn || null,
-
-
             }
           } 
   >       
@@ -46,7 +44,7 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
         rules={[
           {
             required: true,
-            
+            message: 'Please input your telephone number!',
           },
           {
             pattern : /^[0-9]{2,4}[-][\d]{6,8}$/,
@@ -72,10 +70,11 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
         rules={[
           {
             required: true,
+            message: 'Please input your mobile number!',
             
           },
             {
-              pattern : /^[+][\d]{2,3}[\d]{9,10}$/,
+              pattern : /^[+][\d]{2,3}[-][\d]{9,10}$/,
               message: "Contact number should start with country code. For example: +91-xxxxxxxxxx",
           }
         ]} 
@@ -98,6 +97,7 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
         rules={[
           {
             required: true,
+            message: 'Please input your email!',
             
           },
           {
@@ -121,15 +121,20 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
         <Form.Item
         className='relative w-full'
         name='contactDetails_alternateEmail'
+        dependencies={['contactDetails_email']}
         rules={[
-          {
-            required: true,
-            
-          },
           {
             pattern: /^.+\@.+\..+$/,
             message: 'Invalid Email',
-        }
+          },
+          ({ getFieldValue }) => ({
+            validator(rule, value) {
+              if (!value || getFieldValue('contactDetails_email') !== value) {
+                return Promise.resolve();
+              }
+              return Promise.reject('Email and Alternate Email cannot be same!');
+            },
+          }),
         ]} 
         >
           <Input
@@ -145,12 +150,7 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
 
         <Form.Item
         className='relative w-full'
-        name='contactDetails_twitter'
-        rules={[
-          {
-            required: true,
-          }
-        ]}>
+        name='contactDetails_twitter'>
           <Input
           prefix = {<BsTwitter className=' text-green-500 text-xl'/>}	
           addonBefore = 'https://www.twitter.com/'
@@ -163,12 +163,7 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
          
          <Form.Item
         className='relative w-full'
-        name='contactDetails_linkedIn'
-        rules={[
-          {
-            required: true,
-          }
-        ]}>
+        name='contactDetails_linkedIn'>
           <Input
           prefix = {<BsLinkedin className=' text-green-500 text-xl'/>}	
           addonBefore = 'https://www.linkedin.com/'
@@ -179,12 +174,7 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
          </Form.Item>
          <Form.Item
         className='relative w-full'
-        name='contactDetails_facebook'
-        rules={[
-          {
-            required: true,
-          }
-        ]}>
+        name='contactDetails_facebook'>
           <Input
           prefix = {<BsFacebook className=' text-green-500 text-xl'/>}	
           addonBefore = 'https://www.facebook.com/'
@@ -244,12 +234,6 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
 
 
 
-    <div className='flex justify-between gap-10'> 
-            <FormButtons
-            handleClick = {handleClick}
-            step = {step}
-            stepsArray = {stepsArray}/>
-    </div>
     </>
   )
 }

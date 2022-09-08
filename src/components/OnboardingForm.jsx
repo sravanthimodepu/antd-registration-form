@@ -40,7 +40,7 @@ const OnboardingForm = () => {
         "Third Holder",
         "Address - First Holder",
         "Contact Details First Holder",
-        "Capital / Contribution and commitment",
+        "Capital, Contribution and Commitment",
         "Nomination",
         "Bank Details",
         "Other Details",
@@ -119,7 +119,7 @@ const OnboardingForm = () => {
 
   return (
    <div
-   className=' border-1 border-red-500 flex flex-col text-center items-center'>       
+   className=' flex flex-col text-center items-center'>       
             <h1
             style={{fontSize: '1.5vw'}}
             className='text-white'>

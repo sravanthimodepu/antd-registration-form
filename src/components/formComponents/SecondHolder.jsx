@@ -23,6 +23,8 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
   return (
     <>
       <Form
+      labelCol={{ span: 9 }}
+      wrapperCol={{ span: 14 }}
         form={form}
         name='SecondHolder'
         onFinish={onFinish}
@@ -41,11 +43,13 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
         }
         >
         <Form.Item
+        label={<span className='text-white'>Salutation</span>}
         className='relative w-full'
         name='secondHolder_salutation'
         rules={[
           {
             required: true,
+            message: 'Please select your Salutation',
             
           },
         ]}>
@@ -101,11 +105,13 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>  
 
           <Form.Item
+          label={<span className='text-white'>First Name</span>}
            className='relative w-full'
            name='secondHolder_firstName'
            rules={[
             {
               required: true,
+              message: 'Please input your First Name',
              },
              {
               min: 3,
@@ -132,6 +138,7 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
           <Form.Item
+          label={<span className='text-white'>Middle Name</span>}
            className='relative w-full'
            name='secondHolder_middleName'
            rules={[
@@ -159,11 +166,13 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
           <Form.Item
+          label={<span className='text-white'>Last Name</span>}
            className='relative w-full'
            name='secondHolder_lastName'
            rules={[
             {
               required: true,
+              message: 'Please input your Last Name',
              },
              {
               min: 3,
@@ -189,11 +198,13 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
           <Form.Item
+          label={<span className='text-white'>Gender</span>}
             className='relative w-full'
             name='secondHolder_gender'
             rules={[
               {
                 required: true,
+                message: 'Please select Gender'
               },
             ]}>
           
@@ -236,6 +247,7 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
             </Form.Item>
 
             <Form.Item
+            label={<span className='text-white'>Pan</span>}
            className='relative w-full'
            name='secondHolder_pan'
            
@@ -263,11 +275,13 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
 
           
           <Form.Item
+          label={<span className='text-white'>Second Holder CKYC</span>}
           className='relative w-full'
           name='secondHolder_ckyc'
           rules={[
             {
               required: true,
+              message: 'Please input CKYC Number',
             },
             {
               pattern: /^[0-9]+$/,
@@ -281,11 +295,11 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
           >
 
           <Input
+          maxLength={14}
           size='large'
           allowClear
           prefix = {<BsCardText className=' text-green-500 text-xl'/>}
-          defaultValue={formData.secondHolder.cKYC || null}
-          placeholder='Second Holder CKYC Number'
+          placeholder='CKYC Number'
           onChange={(e) => {secondHolder.cKYC = e.target.value}}
           />
 
@@ -313,12 +327,6 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
           </div>
 
             
-          <div className='flex justify-between gap-10'> 
-            <FormButtons
-            handleClick = {handleClick}
-            step = {step}
-            stepsArray = {stepsArray}/>
-    </div>
         </Form>  
     </>
   )

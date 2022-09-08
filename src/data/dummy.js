@@ -478,6 +478,7 @@ export const links = [
     title: 'Dashboard',
     links: [
       {
+        displayName: 'Home',
         name: 'Home',
         icon: <AiOutlineHome />,
       },
@@ -488,46 +489,57 @@ export const links = [
     title: 'Pages',
     links: [
       {
+        displayName : 'Investor Onboarding',
         name: 'InvestorOnboarding',
         icon: <MdOutlinePersonalInjury />,
       },
       {
+        displayName : 'Draw Down',
         name: 'DrawDown',
         icon: <GiCash/>,
       },
       {
+        displayName : 'Redemption Request',
         name: 'ReductionRequest',
         icon: <RiStickyNoteLine />,
       },
       {
+        displayName : 'NAV Entry',
         name: 'NAVEntry',
         icon: <MdOutlineEditNote />,
       },
       {
+        displayName : 'NAV Endorsement',
         name: 'NAVEndorsement',
         icon: <FcApproval />,
       },
       {
+        displayName : 'Transaction Endorsement',
         name: 'TransactionEndorsement',
         icon: <AiOutlineTransaction/>,
       },
       {
+        displayName : 'Control Panel',
         name: 'ControlPanel',
         icon: <VscSourceControl/>,
       },
       {
+        displayName : ' Dividend',
         name: 'Dividend',
         icon: <GiPayMoney />,
       },
       {
+        displayName : 'Quality Check',
         name: 'QualityCheck',
         icon: <BsCardChecklist/>,
       },
       {
+        displayName : 'Non-Financials',
         name: 'NonFinancials',
         icon: <TbCashBanknoteOff/>,
       },
       {
+        displayName : 'Query Statements',
         name: 'QueryStatements',
         icon: <MdQueryStats />,
       }

@@ -86,6 +86,7 @@ const initialOnboardingData = {
     },
     capitalContributionCommitment : {
         commitment: '',
+        amountInWords : '',
         contributionType : '',
         ifsc: '',
         bank: '',
@@ -106,9 +107,9 @@ const initialOnboardingData = {
     bankDetails : {
         accountNumber : '',
         accountType : '',
-        ifscCode: '',
-        bankName: '',
-        branchName: '',
+        ifsc: '',
+        bank: '',
+        branch: '',
         micr: '',
         paymentMode: '',
     },

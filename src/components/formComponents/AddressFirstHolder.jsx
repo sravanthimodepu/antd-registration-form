@@ -48,6 +48,8 @@ const AddressFirstHolder = ({handleClick , step , stepsArray}) => {
     <>
    <Form
            form={form}
+           labelCol={{ span: 9 }}
+           wrapperCol={{ span: 14 }}
            name='ThirdHolder'
            onFinish={onFinish}
            autoComplete = "off"
@@ -67,11 +69,13 @@ const AddressFirstHolder = ({handleClick , step , stepsArray}) => {
    >
 
       <Form.Item
+        label={<span className='text-white'>Address Type</span>}
       className='relative w-full'
       name='address_addressType'
       rules={[
         {
           required: true,
+          message: 'Please select address type',
           
         },
       ]} >
@@ -109,12 +113,12 @@ const AddressFirstHolder = ({handleClick , step , stepsArray}) => {
 
       </Form.Item>
       <Form.Item
-          className='relative w-full'
-          label={<p className=' relative right-0  text-black text-center p-4 pr-1 pl-0 border rounded mt-6 bg-white text-base'>Address Same as Correspondance?:</p>}
-
+        label={<span className='text-white'>Correspondence address?</span>}
+          className='relative w-full '
           name='address_sameAsCorrespondence'
           >
                <Switch
+               className=' w-0.5'
                defaultChecked = {address.sameAsCorrespondence}
                onChange={(e)=>{address.sameAsCorrespondence = e;}}
                checkedChildren="Yes" unCheckedChildren="No"  />
@@ -122,11 +126,13 @@ const AddressFirstHolder = ({handleClick , step , stepsArray}) => {
 
           </Form.Item>
           <Form.Item
+        label={<span className='text-white'>Address Line 1</span>}
           className='relative w-full'
           name='address_addressLine1'
           rules={[
             {
               required: true,
+              message: 'Please enter address line 1',
             },
             {
               min: 5,
@@ -155,6 +161,7 @@ const AddressFirstHolder = ({handleClick , step , stepsArray}) => {
             </Form.Item>
 
             <Form.Item
+        label={<span className='text-white'>Address Line 2</span>}
           className='relative w-full'
           name='address_addressLine2'
           rules={[
@@ -183,19 +190,26 @@ const AddressFirstHolder = ({handleClick , step , stepsArray}) => {
             </Form.Item>
 
           <Form.Item
+        label={<span className='text-white'>Pin Code</span>}
           name='address_pinCode'
           className='relative w-full'
           rules={[
             {
               required: true,
+              message: 'Please enter pin code',
             },
             {
-              pattern: /^[0-9{7}\s]*$/,
+              len: 6,
+              message: ` Pincode should be of 6 digits`
+            },
+            {
+              pattern: /^[1-9]{1}[0-9]{2}[0-9]{3}$/,
               message: ` enter a Valid Pincode`
-            } 
+            }
           ]}
           >
           <Input
+          maxLength={6}
           prefix = {<GoLocation className=' text-green-500 text-xl'/>}	
           size='large'
           placeholder = "PinCode"
@@ -210,11 +224,13 @@ const AddressFirstHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
           <Form.Item
+        label={<span className='text-white'>City</span>}
           name='address_city'
           className='relative w-full'
           rules={[
             {
               required: true,
+              message: 'Please enter city',
             },
           ]}
           >
@@ -234,11 +250,13 @@ const AddressFirstHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
           <Form.Item
+        label={<span className='text-white'>State</span>}
           name='address_state'
           className='relative w-full'
           rules={[
             {
               required: true,
+              message: 'Please enter state',
             }, 
           ]}
           >
@@ -254,6 +272,7 @@ const AddressFirstHolder = ({handleClick , step , stepsArray}) => {
 
 
           <Form.Item
+        label={<span className='text-white'>Country</span>}
           name='address_country'
           className='relative w-full'
           rules={[
@@ -292,14 +311,6 @@ const AddressFirstHolder = ({handleClick , step , stepsArray}) => {
               </div>
           </div>
 
-
-
-          <div className='flex justify-between gap-10'> 
-            <FormButtons
-            handleClick = {handleClick}
-            step = {step}
-            stepsArray = {stepsArray}/>
-    </div>
    </Form>
     </>
   )

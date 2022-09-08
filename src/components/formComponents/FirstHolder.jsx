@@ -8,6 +8,7 @@ import {FaIdCard} from "react-icons/fa";
 import { useStateContext } from '../../contexts/ContextProvider';
 import {Form , Button , Select , DatePicker , Input} from 'antd';
 import {FormButtons} from './index'
+import {RiCake2Fill} from "react-icons/ri";
 import * as moment from 'moment';
 
 const FirstHolder = ({handleClick , step , stepsArray}) => {
@@ -22,6 +23,8 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
     
       <Form
         form={form}
+        labelCol={{ span: 9 }}
+        wrapperCol={{ span: 14 }}
         name='FirstHolder'
         onFinish={onFinish}
         autoComplete = "off"
@@ -41,11 +44,13 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
         }
         >
         <Form.Item
+          label={<span className='text-white'>Salutation</span>}
         className='relative w-full'
         name='firstHolder_salutation'
         rules={[
           {
             required: true,
+            message: 'Please select your salutation',
             
           },
         ]}>
@@ -101,11 +106,13 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>  
 
           <Form.Item
+          label={<span className='text-white'>First Name</span>}
            className='relative w-full'
            name='firstHolder_firstName'
            rules={[
             {
               required: true,
+              message: 'Please input your first name',
              },
              {
               min: 3,
@@ -132,6 +139,7 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
           <Form.Item
+          label={<span className='text-white'>Middle Name</span>}
            className='relative w-full'
            name='firstHolder_middleName'
            rules={[
@@ -159,11 +167,13 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
           <Form.Item
+          label={<span className='text-white'>Last Name</span>}
            className='relative w-full'
            name='firstHolder_lastName'
            rules={[
             {
               required: true,
+              message: 'Please input your last name',
              },
              {
               min: 3,
@@ -189,11 +199,14 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
           <Form.Item
+          label={<span className='text-white'>Gender</span>}
+          
             className='relative w-full'
             name='firstHolder_gender'
             rules={[
               {
                 required: true,
+                message: 'Please select the Gender'
               },
             ]}>
           
@@ -224,7 +237,7 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
             </div>
             }
             >Female</Select.Option>
-            <Select.Option value="Other"
+            <Select.Option value = "Other"
             label = {<div className='flex gap-1 justify-start'>
             <BsGenderAmbiguous className=' text-green-500 text-xl mt-3 '/>
             <span>Other</span>
@@ -238,6 +251,7 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
             <Form.Item
            className='relative w-full'
            name='firstHolder_pan'
+            label={<span className='text-white'>PAN</span>}
            
            rules={[
              {
@@ -262,6 +276,7 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
           <Form.Item
+          label={<span className='text-white'>Father/<br/>Husband Name</span>}
            className='relative w-full'
            name='firstHolder_fatherOrHusbandName'
            rules={[
@@ -297,28 +312,39 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
 
 
           <Form.Item
-          label={<p className=' relative right-0  text-black text-center p-4 pr-1 pl-0 border rounded mt-6 bg-white text-base'>First Holder Date Of Birth:</p>}
+          //label={<p className=' relative right-0  text-black text-center p-4 pr-1 pl-0 border rounded mt-6 bg-white text-base'>First Holder Date Of Birth:</p>}
+          label={<span className='text-white'>Date Of Birth</span>}
           className='relative w-full'
           name='firstHolder_dob'
           rules={[
             {
               required: true,
+              message: 'Please input your Date of Birth!',
             }
           ]}
           hasFeedback
           >
             <DatePicker
+            prevIcon = {<RiCake2Fill className='text-green-500 text-xl'/>}
+            superPrevIcon = {<RiCake2Fill className='text-green-500 text-xl'/>}
+            nextIcon = {<RiCake2Fill className='text-green-500 text-xl'/>}
+            superNextIcon = {<RiCake2Fill className='text-green-500 text-xl'/>}
+            suffixIcon = {<RiCake2Fill className='text-green-500 text-xl'/>}
+            className='w-full'
+            placeholder='Date of Birth'	
             onChange={(e)=>{firstHolder.dob =  moment(e).format('DD-MM-YYYY').toString() ; console.log(formData)}}
             format='DD/MM/YYYY'
             size='large'/>
           </Form.Item>
           
           <Form.Item
+          label={<span className='text-white'>CKYC number</span>}	
           className='relative w-full'
           name='firstHolder_ckyc'
           rules={[
             {
               required: true,
+              message: 'Please input your CKYC!',
             },
             {
               pattern: /^[0-9]+$/,
@@ -332,10 +358,10 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
           >
 
           <Input
+          maxLength={14}
           size='large'
           allowClear
           prefix = {<BsCardText className=' text-green-500 text-xl'/>}
-          defaultValue={formData.firstHolder.cKYC || null}
           placeholder='CKYC Number'
           onChange={(e) => {firstHolder.cKYC = e.target.value}}
           />
@@ -364,13 +390,7 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
           </div>
 
 
-        </Form>  
-        <div className='flex justify-between gap-10'> 
-            <FormButtons
-            handleClick = {handleClick}
-            step = {step}
-            stepsArray = {stepsArray}/>
-    </div>
+        </Form> 
     </>
   )
 }

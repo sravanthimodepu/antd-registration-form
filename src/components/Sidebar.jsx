@@ -7,6 +7,7 @@ import {Tooltip } from 'antd';
 import { contextMenuItems, links } from '../data/dummy';
 
 import { useStateContext } from '../contexts/ContextProvider';
+import logo from '../data/Validus-Logo.png';
 
 
 const Sidebar = () => {
@@ -31,7 +32,7 @@ const Sidebar = () => {
       items-center">
         <Link to='/' onClick={handleCloseSidebar}
         className= "items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900">
-          <SiShopware /> <span>Validus</span>
+          <img className='w-3/4' src={logo} alt="company logo" />
 
         </Link>
         <Tooltip placement="bottom" title={"close"}>
@@ -56,7 +57,7 @@ const Sidebar = () => {
                 isActive ? activeLink : normalLink
               }>
                 {link.icon}
-                <span className='capitalize'>{link.name}</span>
+                <span className='capitalize'>{link.displayName}</span>
               </NavLink>
             ))}
           </div>

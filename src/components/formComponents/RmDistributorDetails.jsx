@@ -13,7 +13,7 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
   const [distributorSelectData , setDistributorSelectData] = useState([]);
   const [distributorFillData , setDistributorFillData] = useState({});
   const [form] = Form.useForm();
-
+  const rmAndDistData = formData;
 
   const rmData = [
     {id: 1 , rmEun: "RM-123456789" , rmName: "Sri Vishnu Reddy", rmEmail: "srivishnu@gmail.com" , rmMobile: "9999999999" , distID : 1 , distributors : ["D-123453789" , "D-545656765" ]},
@@ -40,7 +40,7 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
   ]
 
 
-  const handleRmchange = async function(value , event)  { 
+  const handleRmchange = function(value , event)  { 
     form.resetFields(['distributorDetails_distributorEun' , 'distributorDetails_distName' , 'distributorDetails_distEmail' , 'distributorDetails_distMobile']);
     setRmFillData(rmData.find(rm => rm.id == event.key));
     setDistributorSelectData(distributorData.filter(dist => dist.rmID == event.key));
@@ -54,6 +54,11 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
       rmDetails_rmMobile : rmFillData.rmMobile,
 
     })
+    rmAndDistData.rmDetails.rmEun = rmFillData.rmEun;
+    rmAndDistData.rmDetails.name = rmFillData.rmName;
+    rmAndDistData.rmDetails.email = rmFillData.rmEmail;
+    rmAndDistData.rmDetails.mobile = rmFillData.rmMobile;
+
   }, [rmFillData])
 
   const handleDistchange = (value , event) => {
@@ -71,151 +76,83 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
       distributorDetails_distMobile : distributorFillData.distMobile,
 
     })
+
+    rmAndDistData.distributorDetails.distributorEun = distributorFillData.distEun;
+    rmAndDistData.distributorDetails.name = distributorFillData.distName;
+    rmAndDistData.distributorDetails.email = distributorFillData.distEmail;
+    rmAndDistData.distributorDetails.mobile = distributorFillData.distMobile;
   }, [distributorFillData])
 
   const onFinish = () => {
-   handleClick('next');
+  setFormData(rmAndDistData);
+  handleClick('next');
+  console.log(formData);
   } 
   return (
     <>
             <Form
+            labelCol={{ span: 9 }}
+            wrapperCol={{ span: 14 }}
             form={form}
             name= 'rmAndDistributorDetails'
             onFinish={onFinish}
             autoComplete = "off"
             className=' flex flex-col justify-center items-center w-full gap-0.5 h-full text-white'
-            >
-              <h1 className=' text-white'>{`RM Details`}</h1>
-
-            <Form.Item
-              className=" relative w-full"
-              name= 'rmDetails_rmName'
-              rules={[
-                {
-                  required: true,
-                  
-                },
-              ]}
-              >
-                <Select
-                  allowClear
-                  showSearch
-                  placeholder="RM-Name"
-                  onChange={handleRmchange}
-                  value = {rmFillData.rmName || ""}
-                  size='large'>
-                    {rmData.map((rm, index)=> (
-                      <Select.Option key={rm.distID} value={rm.rmName}>{rm.rmName}</Select.Option>
-                    ))}
-              </Select>
-              </Form.Item>
-
-              <Form.Item
-            name='rmDetails_rmEUIN'
-            className='relative w-full'
-            rules={[
+            initialValues={
               {
-                required: true,
-              },
-            ]}>
-               <Select
-                  allowClear
-                  showSearch
-                  placeholder="Select RM-EUIN"
-                  onChange={handleRmchange}
-                  value = {rmFillData.rmEun || ""}
-                  size='large'>
-                    {rmData.map((rm, index)=> (
-                      <Select.Option key={rm.distID} value={rm.rmEun}>{rm.rmEun}</Select.Option>
-                    ))}
-              </Select>
-            </Form.Item>
-
-
-
-              <Form.Item
-              className=" relative w-full"
-              name= 'rmDetails_rmEmail'
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-              >
-                <Select
-                  allowClear
-                  showSearch
-                  placeholder="RM-Email"
-                  onChange={handleRmchange}
-                  value = {rmFillData.rmEmail || ""}
-                  size='large'>
-                    {rmData.map((rm, index)=> (
-                      <Select.Option key={rm.distID} value={rm.rmEmail}>{rm.rmEmail}</Select.Option>
-                    ))}
-              </Select>
-              </Form.Item>
-
-
-
-              <Form.Item
-              className=" relative w-full"
-              name= 'rmDetails_rmMobile'
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-              >
-                <Select
-                  allowClear
-                  showSearch
-                  placeholder="RmMobile"
-                  onChange={handleRmchange}
-                  value = {rmFillData.rmMobile || ""}
-                  size='large'>
-                    {rmData.map((rm, index)=> (
-                      <Select.Option key={rm.distID} value={rm.rmMobile}>{rm.rmMobile}</Select.Option>
-                    ))}
-              </Select>
-              </Form.Item>
+                distributorDetails_distName : formData.distributorDetails.name || null,
+                distributorDetails_distributorEun: formData.distributorDetails.distributorEun,
+                distributorDetails_distEmail : formData.distributorDetails.email,
+                distributorDetails_distMobile : formData.distributorDetails.mobile,
+                rmDetails_rmName : formData.rmDetails.name,
+                rmDetails_rmEUIN : formData.rmDetails.rmEun,
+                rmDetails_rmEmail : formData.rmDetails.email,
+                rmDetails_rmMobile : formData.rmDetails.mobile,
+              }
+            }
+            >
               
 {/* **************************************DISTRIBUTOR DETAILS***************************************************** */}
 
               <h1 className='text-white'>Distributor Details</h1>
 
               <Form.Item
+              label={<span className='text-white'>Distributor Name</span>}
               className=" relative w-full"
               name= 'distributorDetails_distName'
               rules={[
                 {
                   required: true,
+                  message: 'Please input Distributor Name!',
                 },
               ]}
               >
                 <Select
+                 optionLabelProp='label'
                   allowClear
                   showSearch
                   placeholder="Distributor-Name"
                   onChange={handleDistchange}
-                  value = {distributorFillData.distName || ""}
                   size='large'>
                     {
                       distributorSelectData.length > 0?
                     distributorSelectData.map((dist, index)=> (
-                      <Select.Option key={dist.distEun} value={dist.distName}>{dist.distName}</Select.Option>
+                      <Select.Option key={dist.distEun} label={dist.distName} value={dist.distName}>{`${dist.distName}-${dist.distEun}`}</Select.Option>
                     )):
                     distributorData.map((dist, index)=> (
-                      <Select.Option key={dist.distEun} value={dist.distName}>{dist.distName}</Select.Option>
+                      <Select.Option key={dist.distEun} label={dist.distName} value={dist.distName}>{`${dist.distName}-${dist.distEun}`}</Select.Option>
                     ))
                     }
               </Select>
               </Form.Item>
               <Form.Item
+              label={<span className='text-white'>Distributor EUIN</span>}
               className=" relative w-full"
               name= 'distributorDetails_distributorEun'
               rules={[
                 {
                   required: true,
+                  message: 'Please input Distributor EUIN!',
                 },
               ]}
               >
@@ -224,7 +161,6 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
                   showSearch
                   placeholder="Select Distributor-EUN"
                   onChange={handleDistchange}
-                  value = {distributorFillData.distEun || ''}
                   size='large'>
                     {
                       distributorSelectData.length > 0?
@@ -239,11 +175,13 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
               </Form.Item>
 
               <Form.Item
+              label={<span className='text-white'>Distributor Email</span>}
               className=" relative w-full"
               name= 'distributorDetails_distEmail'
               rules={[
                 {
                   required: true,
+                  message: 'Please input Distributor Email!',
                 },
               ]}
               >
@@ -252,7 +190,6 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
                   showSearch
                   placeholder="Distributor Email"
                   onChange={handleDistchange}
-                  value = {distributorFillData.distEmail || ""}
                   size='large'>
                      {
                       distributorSelectData.length > 0?
@@ -268,11 +205,13 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
 
 
               <Form.Item
+              label={<span className='text-white'>Distributor Mobile</span>}
               className=" relative w-full"
               name= 'distributorDetails_distMobile'
               rules={[
                 {
                   required: true,
+                  message: 'Please input Distributor Mobile!',
                 },
               ]}
               >
@@ -281,7 +220,6 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
                   showSearch
                   placeholder="Distributor Mobile"
                   onChange={handleDistchange}
-                  value = {distributorFillData.distMobile || ""}
                   size='large'>
                     {
                     distributorSelectData.length > 0?
@@ -295,8 +233,107 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
               </Select>
               </Form.Item>
 
+{/* ***************************************RM DETAILS***************************************************** */}
 
-            <Form.Item>
+
+        <h1 className=' text-white'>{`RM Details`}</h1>
+
+            <Form.Item
+              label={<span className='text-white'>RM Name</span>}
+              className=" relative w-full"
+              name= 'rmDetails_rmName'
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input RM Name!',
+                },
+              ]}
+              >
+                <Select
+                  allowClear
+                  showSearch
+                  placeholder="RM-Name"
+                  onChange={handleRmchange}
+                  size='large'>
+                    {rmData.map((rm, index)=> (
+                      <Select.Option key={rm.distID} value={rm.rmName}>{rm.rmName}</Select.Option>
+                    ))}
+              </Select>
+              </Form.Item>
+
+              <Form.Item
+              label={<span className='text-white'>RM EUIN</span>}
+            name='rmDetails_rmEUIN'
+            className='relative w-full'
+            rules={[
+              {
+                required: true,
+                message: 'Please input RM EUIN!',
+              },
+            ]}>
+               <Select
+                  allowClear
+                  showSearch
+                  placeholder="Select RM-EUIN"
+                  onChange={handleRmchange}
+                  size='large'>
+                    {rmData.map((rm, index)=> (
+                      <Select.Option key={rm.distID} value={rm.rmEun}>{rm.rmEun}</Select.Option>
+                    ))}
+              </Select>
+            </Form.Item>
+
+
+
+              <Form.Item
+              label={<span className='text-white'>RM Email</span>}
+              className=" relative w-full"
+              name= 'rmDetails_rmEmail'
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+              >
+                <Select
+                  allowClear
+                  showSearch
+                  placeholder="RM-Email"
+                  onChange={handleRmchange}
+                  size='large'>
+                    {rmData.map((rm, index)=> (
+                      <Select.Option key={rm.distID} value={rm.rmEmail}>{rm.rmEmail}</Select.Option>
+                    ))}
+              </Select>
+              </Form.Item>
+
+
+
+              <Form.Item
+              label={<span className='text-white'>RM Mobile</span>}
+
+              className=" relative w-full"
+              name= 'rmDetails_rmMobile'
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input RM Mobile!',
+                },
+              ]}
+              >
+                <Select
+                  allowClear
+                  showSearch
+                  placeholder="RmMobile"
+                  onChange={handleRmchange}
+                  size='large'>
+                    {rmData.map((rm, index)=> (
+                      <Select.Option key={rm.distID} value={rm.rmMobile}>{rm.rmMobile}</Select.Option>
+                    ))}
+              </Select>
+              </Form.Item>
+
+              <Form.Item>
               <Button
               type='primary'
               htmlType='submit'
@@ -304,17 +341,7 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
               >
                 Next
               </Button>
-            </Form.Item>
-
-
-
-
-           <div className='flex justify-between gap-10'> 
-            <FormButtons
-            handleClick = {handleClick}
-            step = {step}
-            stepsArray = {stepsArray}/>
-          </div>  
+            </Form.Item>  
           </Form>
     </>
   )

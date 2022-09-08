@@ -25,6 +25,8 @@ const ThirdHolder = ({handleClick , step , stepsArray}) => {
 
     <Form
         form={form}
+        labelCol={{ span: 9 }}
+        wrapperCol={{ span: 14 }}
         name='ThirdHolder'
         onFinish={onFinish}
         autoComplete = "off"
@@ -44,13 +46,10 @@ const ThirdHolder = ({handleClick , step , stepsArray}) => {
         }
         >
         <Form.Item
+        label={<span className='text-white'>Salutation</span>}
         className='relative w-full'
         name='thirdHolder_salutation'
         rules={[
-          {
-            required: true,
-            
-          },
         ]}>
           <Select
           optionLabelProp='label'
@@ -104,12 +103,10 @@ const ThirdHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>  
 
           <Form.Item
+        label={<span className='text-white'>First Name</span>}
            className='relative w-full'
            name='thirdHolder_firstName'
            rules={[
-            {
-              required: true,
-             },
              {
               min: 3,
               message: 'Minimum 3 characters required',
@@ -135,6 +132,7 @@ const ThirdHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
           <Form.Item
+        label={<span className='text-white'>Middle Name</span>}
            className='relative w-full'
            name='thirdHolder_middleName'
            rules={[
@@ -153,6 +151,7 @@ const ThirdHolder = ({handleClick , step , stepsArray}) => {
           ]}
           >
           <Input
+          
           size='large'
           placeholder = "Middle Name"
           onChange={(e) => {thirdHolder.middleName = e.target.value}}
@@ -162,12 +161,10 @@ const ThirdHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
           <Form.Item
+          label={<span className='text-white'>Last Name</span>}
            className='relative w-full'
            name='thirdHolder_lastName'
            rules={[
-            {
-              required: true,
-             },
              {
               min: 3,
               message: 'Minimum 3 characters required',
@@ -192,12 +189,11 @@ const ThirdHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
           <Form.Item
+            label={<span className='text-white'>Gender</span>}
             className='relative w-full'
             name='thirdHolder_gender'
             rules={[
-              {
-                required: true,
-              },
+              
             ]}>
           
           
@@ -239,15 +235,11 @@ const ThirdHolder = ({handleClick , step , stepsArray}) => {
             </Form.Item>
 
             <Form.Item
+            label={<span className='text-white'>Pan Number</span>}
            className='relative w-full'
            name='thirdHolder_pan'
            
            rules={[
-             {
-               required: true,
-               message: 'Please input your PAN!',
-               
-             },
              {
               pattern: /^[a-zA-Z]{3}[p|P|c|C|h|H|f|F|a|A|t|T|b|B|l|L|j|J|g|G][A-Za-z][\d]{4}[A-Za-z]$/,
               message: 'Invalid PAN',
@@ -266,12 +258,11 @@ const ThirdHolder = ({handleClick , step , stepsArray}) => {
 
           
           <Form.Item
+            label={<span className='text-white'>CKYC number</span>}
           className='relative w-full'
           name='thirdHolder_ckyc'
           rules={[
-            {
-              required: true,
-            },
+            
             {
               pattern: /^[0-9]+$/,
               message: "only numbers allowed"
@@ -294,13 +285,10 @@ const ThirdHolder = ({handleClick , step , stepsArray}) => {
 
           </Form.Item>
           <Form.Item
+            label={<span className='text-white'>Relation</span>}
         className='relative w-full'
         name='thirdHolder_relationship'
         rules={[
-          {
-            required: true,
-            
-          },
         ]}>
           <Select
           optionLabelProp='label'
@@ -344,13 +332,10 @@ const ThirdHolder = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
         <Form.Item
+        label={<span className='text-white'>Mode of Holding</span>}
         className='relative w-full'
         name='thirdHolder_modeOfHolding'
         rules={[
-          {
-            required: true,
-            
-          },
         ]}>
           <Select
           optionLabelProp='label'

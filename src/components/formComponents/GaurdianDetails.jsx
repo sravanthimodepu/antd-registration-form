@@ -5,6 +5,7 @@ import {BsPersonPlus} from "react-icons/bs";
 import {BsCardText} from  "react-icons/bs";
 import {ImProfile} from "react-icons/im";
 import {FaIdCard} from "react-icons/fa";
+import {RiCake2Fill} from "react-icons/ri";
 import { useStateContext } from '../../contexts/ContextProvider';
 import {Form , Button , Select , DatePicker , Switch ,Input} from 'antd';
 import {FormButtons} from './index'
@@ -23,6 +24,8 @@ const GaurdianDetails = ({handleClick , step , stepsArray}) => {
   return (
     <>
       <Form
+      labelCol={{ span: 9 }}
+      wrapperCol={{ span: 14 }}
         form={form}
         name="guardianDetails"
         onFinish={onFinish}
@@ -39,11 +42,13 @@ const GaurdianDetails = ({handleClick , step , stepsArray}) => {
         }
         >
           <Form.Item
+          label={<span className='text-white'>Guardian Name</span>}
           className='relative w-full'
           name='guardianDetails_name'
           rules={[
             {
               required: true,
+              message: 'Please enter your Guardian Name',
              },
              {
               min: 3,
@@ -62,13 +67,14 @@ const GaurdianDetails = ({handleClick , step , stepsArray}) => {
             <Input
           prefix = {<BsPerson className=' text-green-500 text-xl'/>}	
           size='large'
-          placeholder = "Gaurdian Name"
+          placeholder = "Enter Name.."
           onChange={(e) => {guardianDetails.name = e.target.value}}
           allowClear
           />
 
           </Form.Item>
           <Form.Item
+          label={<span className='text-white'>Guardian PAN</span>}
            className='relative w-full'
            name='guardianDetails_pan'
            
@@ -94,29 +100,38 @@ const GaurdianDetails = ({handleClick , step , stepsArray}) => {
           </Form.Item>
          
           <Form.Item
-          label={<p className=' relative right-0  text-black text-center p-4 pr-1 pl-0 border rounded mt-6 bg-white text-base'>Minor Date Of Birth:</p>}
+          //label={<p className=' relative right-0  text-black text-center p-4 pr-1 pl-0 border rounded mt-6 bg-white text-base'>Minor Date Of Birth:</p>}
+          label={<span className='text-white'>Minor Date Of Birth</span>}
           className='relative w-full'
           name='guardianDetails_minorDob'
           rules={[
             {
               required: true,
+              message: 'Please input Minor Date of Birth!',
             }
           ]}
           hasFeedback
           >
-            <DatePicker
+            <DatePicker className='w-full'
+             prevIcon = {<RiCake2Fill className='text-green-500 text-xl'/>}
+             superPrevIcon = {<RiCake2Fill className='text-green-500 text-xl'/>}
+             nextIcon = {<RiCake2Fill className='text-green-500 text-xl'/>}
+             superNextIcon = {<RiCake2Fill className='text-green-500 text-xl'/>}
+             suffixIcon = {<RiCake2Fill className='text-green-500 text-xl'/>}
+            placeholder='select minor DOB'
             onChange={(e)=>{guardianDetails.minorDob =  moment(e).format('DD-MM-YYYY').toString() ;}}
             format='DD/MM/YYYY'
             size='large'/>
           </Form.Item>
 
           <Form.Item
-          className='relative w-full'
-          label={<p className=' relative right-0  text-black text-center p-4 pr-1 pl-0 border rounded mt-6 bg-white text-base'>Minor DoB Attached?:</p>}
+          label={<span className='text-white'>Date Of Birth Attached?</span>}
+          className='relative w-full '
 
           name='guardianDetails_dobAttached'
           >
                <Switch
+               className='relative top-1 left-1'
                onChange={(e)=>{guardianDetails.dobAttached = e}}
                checkedChildren="Yes" unCheckedChildren="No"  />
           
@@ -124,11 +139,13 @@ const GaurdianDetails = ({handleClick , step , stepsArray}) => {
           </Form.Item>
 
           <Form.Item
+          label={<span className='text-white'>Guardian Relation</span>}
         className='relative w-full'
         name='guardianDetails_guardianRelation'
         rules={[
           {
             required: true,
+            message: 'Please select your Guardian Relation!',
             
           },
         ]}>
@@ -192,13 +209,6 @@ const GaurdianDetails = ({handleClick , step , stepsArray}) => {
               </Button>
               </div>
           </div>
-
-          <div className='flex justify-between gap-10'> 
-            <FormButtons
-            handleClick = {handleClick}
-            step = {step}
-            stepsArray = {stepsArray}/>
-    </div>
 
         </Form>
     </>
