@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useStateContext } from '../../contexts/ContextProvider';
 import {Form , Button , Select  , DatePicker , Switch , Input} from 'antd';
 import {GiRotaryPhone , GiPhone} from 'react-icons/gi'
@@ -23,6 +23,8 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
     <Form
             form={form}
             name='contactDetails'
+            labelCol={{ span: 9 }}
+            wrapperCol={{ span: 14 }}
             onFinish={onFinish}
             autoComplete = "off"
             className=' flex flex-col justify-center items-center w-full gap-0.5 h-full text-white'
@@ -38,33 +40,9 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
             }
           } 
   >       
-        <Form.Item
-        className='relative w-full'
-        name='contactDetails_telephone'
-        rules={[
-          {
-            required: true,
-            message: 'Please input your telephone number!',
-          },
-          {
-            pattern : /^[0-9]{2,4}[-][\d]{6,8}$/,
-            message : 'please follow the format 0000-00000000 (STD code)-(mobile number)'
-
-          }
-        ]} 
-        >
-          <Input
-          prefix = {<GiRotaryPhone className=' text-green-500 text-xl'/>}	
-          size='large'
-          placeholder='Telephone'
-          onChange={(e) => contactDetails.telephone = e.target.value}
-          allowClear
-
-          />
-
-        </Form.Item>
 
         <Form.Item
+        label={<span className='text-white'>Mobile</span>}
         className='relative w-full'
         name='contactDetails_mobile'
         rules={[
@@ -76,7 +54,7 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
             {
               pattern : /^[+][\d]{2,3}[-][\d]{9,10}$/,
               message: "Contact number should start with country code. For example: +91-xxxxxxxxxx",
-          }
+            }
         ]} 
         >
           <Input
@@ -92,6 +70,7 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
 
 
         <Form.Item
+        label={<span className='text-white'>Email</span>}
         className='relative w-full'
         name='contactDetails_email'
         rules={[
@@ -103,7 +82,7 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
           {
             pattern: /^.+\@.+\..+$/,
             message: 'Invalid Email',
-        }
+          }
         ]} 
         >
           <Input
@@ -119,6 +98,7 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
 
 
         <Form.Item
+        label={<span className='text-white'>Alternate Email</span>}
         className='relative w-full'
         name='contactDetails_alternateEmail'
         dependencies={['contactDetails_email']}
@@ -148,12 +128,36 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
 
         </Form.Item>
 
+          <Form.Item
+            label={<span className='text-white'>Telephone</span>}
+  
+          className='relative w-full'
+          name='contactDetails_telephone'
+          rules={[
+            {
+              pattern : /^[0-9]{2,4}[-][\d]{6,8}$/,
+              message : 'please follow the format 0000-00000000 (STD code)-(mobile number)'
+  
+            }
+          ]} 
+          >
+            <Input
+            prefix = {<GiRotaryPhone className=' text-green-500 text-xl'/>}	
+            size='large'
+            placeholder='Telephone'
+            onChange={(e) => contactDetails.telephone = e.target.value}
+            allowClear
+  
+            />
+  
+          </Form.Item>
+
         <Form.Item
+        label={<span className='text-white'>Twitter Username</span>}
         className='relative w-full'
         name='contactDetails_twitter'>
           <Input
           prefix = {<BsTwitter className=' text-green-500 text-xl'/>}	
-          addonBefore = 'https://www.twitter.com/'
           size='large'
           placeholder='Twitter Username'
           onChange={(e) => contactDetails.twitter = e.target.value}
@@ -162,22 +166,22 @@ const ContactFirstHolder = ({handleClick, step, stepsArray}) => {
          
          
          <Form.Item
+        label={<span className='text-white'>LinkedIn Username</span>}
         className='relative w-full'
         name='contactDetails_linkedIn'>
           <Input
           prefix = {<BsLinkedin className=' text-green-500 text-xl'/>}	
-          addonBefore = 'https://www.linkedin.com/'
           size='large'
           placeholder='Linkedin Username'
           onChange={(e) => contactDetails.linkedIn = e.target.value}
           />
          </Form.Item>
          <Form.Item
+        label={<span className='text-white'>Facebook Username</span>}
         className='relative w-full'
         name='contactDetails_facebook'>
           <Input
           prefix = {<BsFacebook className=' text-green-500 text-xl'/>}	
-          addonBefore = 'https://www.facebook.com/'
           size='large'
           placeholder='Twitter Username'
           onChange={(e) => contactDetails.facebook = e.target.value}

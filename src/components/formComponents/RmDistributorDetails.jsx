@@ -1,13 +1,8 @@
 import React , {useState , useEffect}from 'react'
-import { BiIdCard } from "react-icons/bi";
-import {CgNametag} from "react-icons/cg";
-import {HiOutlineMail} from "react-icons/hi";
-import {TbDeviceMobile} from "react-icons/tb";
 import { useStateContext } from '../../contexts/ContextProvider'
-import { FormButtons} from './index'
 import { Form , Button , Select } from 'antd';
 
-const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
+const RmDistributorDetails = ({handleClick}) => {
   const {formData , setFormData} = useStateContext()
   const [rmFillData , setRmFillData] = useState({});
   const [distributorSelectData , setDistributorSelectData] = useState([]);
@@ -39,11 +34,18 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
     {rmID : 6 , id: 12 , distEun: "D-345672245" , distName: "T'Challa", distEmail: "wakandaforever@gmail.com" , distMobile: "2222289012"}
   ]
 
-
   const handleRmchange = function(value , event)  { 
-    form.resetFields(['distributorDetails_distributorEun' , 'distributorDetails_distName' , 'distributorDetails_distEmail' , 'distributorDetails_distMobile']);
+    if(value){
+      setDistributorFillData({});
+    form.resetFields(['distributorDetails_distributorEun' , 'distributorDetails_distName' , 'distributorDetails_distEmail' , 'distributorDetails_distMobile' , 'rmDetails_rmName' , 'rmDetails_rmEUIN' , 'rmDetails_rmEmail' , 'rmDetails_rmMobile']);
     setRmFillData(rmData.find(rm => rm.id == event.key));
     setDistributorSelectData(distributorData.filter(dist => dist.rmID == event.key));
+    }
+    else{
+      setRmFillData({});
+      setDistributorSelectData([]);
+      setDistributorFillData({});
+    }
   }
 
   useEffect(() => {
@@ -62,10 +64,32 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
   }, [rmFillData])
 
   const handleDistchange = (value , event) => {
+    if(value){
+    console.log(value );	
     console.log(event)
     setDistributorFillData(distributorData.find(dist => dist.distEun == event.key));
     setRmFillData(rmData.find(rm => rm.distributors.includes(event.key)));
+    }
+    else{
+      console.log('field cleared')
+    setDistributorFillData({});
+    setRmFillData({});
+    form.resetFields(['distributorDetails_distributorEun' , 'distributorDetails_distName' , 'distributorDetails_distEmail' , 'distributorDetails_distMobile' , 'rmDetails_rmEUIN' , 'rmDetails_rmName' , 'rmDetails_rmEmail' , 'rmDetails_rmMobile']);
+    }
   }
+
+  useEffect	(() => {
+    form.setFieldValue({
+      distributorDetails_distName : formData.distributorDetails.name || null,
+      distributorDetails_distributorEun: formData.distributorDetails.distributorEun|| null,
+      distributorDetails_distEmail : formData.distributorDetails.email|| null,
+      distributorDetails_distMobile : formData.distributorDetails.mobile|| null,
+      rmDetails_rmName : formData.rmDetails.name|| null,
+      rmDetails_rmEUIN : formData.rmDetails.rmEun|| null,
+      rmDetails_rmEmail : formData.rmDetails.email|| null,
+      rmDetails_rmMobile : formData.rmDetails.mobile|| null
+    })
+  })
 
   useEffect(() => {
     console.log(distributorFillData)
@@ -101,13 +125,13 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
             initialValues={
               {
                 distributorDetails_distName : formData.distributorDetails.name || null,
-                distributorDetails_distributorEun: formData.distributorDetails.distributorEun,
-                distributorDetails_distEmail : formData.distributorDetails.email,
-                distributorDetails_distMobile : formData.distributorDetails.mobile,
-                rmDetails_rmName : formData.rmDetails.name,
-                rmDetails_rmEUIN : formData.rmDetails.rmEun,
-                rmDetails_rmEmail : formData.rmDetails.email,
-                rmDetails_rmMobile : formData.rmDetails.mobile,
+                distributorDetails_distributorEun: formData.distributorDetails.distributorEun|| null,
+                distributorDetails_distEmail : formData.distributorDetails.email|| null,
+                distributorDetails_distMobile : formData.distributorDetails.mobile|| null,
+                rmDetails_rmName : formData.rmDetails.name|| null,
+                rmDetails_rmEUIN : formData.rmDetails.rmEun|| null,
+                rmDetails_rmEmail : formData.rmDetails.email|| null,
+                rmDetails_rmMobile : formData.rmDetails.mobile|| null
               }
             }
             >
@@ -128,10 +152,11 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
               ]}
               >
                 <Select
+                
                  optionLabelProp='label'
                   allowClear
                   showSearch
-                  placeholder="Distributor-Name"
+                  placeholder="Distributor Name"
                   onChange={handleDistchange}
                   size='large'>
                     {
@@ -252,12 +277,14 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
                 <Select
                   allowClear
                   showSearch
-                  placeholder="RM-Name"
+                  placeholder="RM Name"
                   onChange={handleRmchange}
                   size='large'>
+
                     {rmData.map((rm, index)=> (
                       <Select.Option key={rm.distID} value={rm.rmName}>{rm.rmName}</Select.Option>
                     ))}
+                    
               </Select>
               </Form.Item>
 
@@ -274,7 +301,7 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
                <Select
                   allowClear
                   showSearch
-                  placeholder="Select RM-EUIN"
+                  placeholder="Select RM EUIN"
                   onChange={handleRmchange}
                   size='large'>
                     {rmData.map((rm, index)=> (
@@ -292,13 +319,14 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
               rules={[
                 {
                   required: true,
+                  message: 'Please input RM Email!',
                 },
               ]}
               >
                 <Select
                   allowClear
                   showSearch
-                  placeholder="RM-Email"
+                  placeholder="RM Email"
                   onChange={handleRmchange}
                   size='large'>
                     {rmData.map((rm, index)=> (
@@ -324,7 +352,7 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
                 <Select
                   allowClear
                   showSearch
-                  placeholder="RmMobile"
+                  placeholder="RM Mobile"
                   onChange={handleRmchange}
                   size='large'>
                     {rmData.map((rm, index)=> (
@@ -337,7 +365,6 @@ const RmDistributorDetails = ({handleClick, step, stepsArray}) => {
               <Button
               type='primary'
               htmlType='submit'
-              // onClick={()=>handleClick('next')}
               >
                 Next
               </Button>

@@ -11,14 +11,19 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { earningData , SparklineAreaData , ecomPieChartData } from '../data/dummy';
 
 import { useStateContext } from '../contexts/ContextProvider';
+import ApplicationSelector from '../components/ApplicationSelector';
 const InvestorOnboarding = () => {
   const {formData , setFormData} = useStateContext()
+  const [applicationSelected , setApplictionSelected] = useState(false)
   console.log(formData)
   return (
         <div className='mt-12'>
-          <div className="flex flex-wrap lg:flex-nowrap justify-evenly">
+          <div className="flex flex-wrap lg:flex-nowrap justify-evenly ">
             
-                  <div className='relative w-3/4 'style={{ maxHeight:'80vh' , maxWidth :'1275px' }}>
+            {
+              applicationSelected ?(
+                <>
+                <div className='relative w-3/4 'style={{ maxHeight:'80vh' , maxWidth :'1275px' }}>
                   <div className="bg-gray-100  text-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-xl  h-screen p-2 m-3 overflow-y-auto " style={{ maxHeight:'900px' , maxWidth :'1275px' }}>
                  
                  <TransformWrapper className="relative" wheel={ {disabled : true}}  >
@@ -40,7 +45,15 @@ const InvestorOnboarding = () => {
                 <div
                 className = "gap-2 m-3 p-1 shadow text-white w-1/2 dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl"  style={{ maxHeight:'900px'  , backgroundColor: '#A0A7B0'}}>
                   <OnboardingForm/>
-                </div> 
+                </div>
+                </>
+                )
+                : 
+                <ApplicationSelector setApplictionSelected={setApplictionSelected} />
+
+            }
+            
+                   
           </div>
 
         </div>

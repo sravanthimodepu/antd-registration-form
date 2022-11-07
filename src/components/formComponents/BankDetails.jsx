@@ -99,6 +99,7 @@ const onFinish = () => {
         ]}
         >
           <Input
+          maxLength={18}
             prefix = {<MdOutlineFormatListNumbered className=' text-green-500 text-xl'/>}
             size='large'
             placeholder = "Enter Account Number"
@@ -139,14 +140,6 @@ const onFinish = () => {
                                      <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
                                     <span>Current</span>
                                     </div>}>Current</Select.Option>
-          <Select.Option value='Recurring' label={<div className='flex gap-1 justify-start'>
-                                     <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
-                                    <span>Recurring</span>
-                                    </div>}>Recurring</Select.Option>
-          <Select.Option value='Fixed' label={<div className='flex gap-1 justify-start'>
-                                     <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
-                                    <span>Fixed</span>
-                                    </div>}>Fixed</Select.Option>
           <Select.Option value='NRE' label={<div className='flex gap-1 justify-start'>
                                      <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
                                     <span>NRE</span>
@@ -155,10 +148,6 @@ const onFinish = () => {
                                      <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
                                     <span>NRO</span>
                                     </div>}>NRO</Select.Option>
-          <Select.Option value='FCNR' label={<div className='flex gap-1 justify-start'>
-                                     <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
-                                    <span>FCNR</span>
-                                    </div>}>FCNR</Select.Option>
           <Select.Option value='Others' label={<div className='flex gap-1 justify-start'>
                                      <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
                                     <span>Others</span>

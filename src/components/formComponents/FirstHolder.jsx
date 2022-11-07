@@ -1,4 +1,4 @@
-import React  from 'react'
+import React, { useState }  from 'react'
 import {BsGenderAmbiguous} from "react-icons/bs"
 import {BsPerson} from "react-icons/bs";
 import {BsPersonPlus} from "react-icons/bs";
@@ -11,13 +11,30 @@ import {FormButtons} from './index'
 import {RiCake2Fill} from "react-icons/ri";
 import * as moment from 'moment';
 
-const FirstHolder = ({handleClick , step , stepsArray}) => {
+const FirstHolder = ({handleClick , step , stepsArray , setStepsArray , setStep , skip , setSkip}) => {
   const {formData , setFormData} = useStateContext()
   const [form] = Form.useForm();
+  
+  const [Gaurdian ,   setGaurdian] = useState(true)
+
   const onFinish = () => {
-    handleClick('next');
+    handleClick('next')
    } 
    const firstHolder = formData.firstHolder;
+
+  const handledateofbirth = (e) =>{
+    firstHolder.dob =  moment(e).format('DD-MM-YYYY').toString() ; console.log(formData)
+    if(e){
+    console.log(Math.abs(e.diff(moment(), 'years')))
+    if(Math.abs(e.diff(moment(), 'years')) >= 18){
+      setGaurdian(false)
+    }
+    else if (Math.abs(e.diff(moment(), 'years')) < 18){
+      setGaurdian(true)
+    }
+  }
+  }
+
   return (
     <>
     
@@ -97,9 +114,9 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
             value="Prof">Prof</Select.Option>
             <Select.Option label = {<div className='flex gap-1 justify-start'>
                                      <ImProfile className=' text-green-500 text-xl mt-3 '/>
-                                    <span>Captian</span>
+                                    <span>Captain</span>
                                     </div>}
-            value="Captian">Captian</Select.Option>
+            value="Captian">Captain</Select.Option>
 
           </Select>
           
@@ -282,6 +299,7 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
            rules={[
              {
                required: true,
+                message: 'Please input your Father/Husband Name',
               },
               {
                min: 3,
@@ -332,7 +350,7 @@ const FirstHolder = ({handleClick , step , stepsArray}) => {
             suffixIcon = {<RiCake2Fill className='text-green-500 text-xl'/>}
             className='w-full'
             placeholder='Date of Birth'	
-            onChange={(e)=>{firstHolder.dob =  moment(e).format('DD-MM-YYYY').toString() ; console.log(formData)}}
+            onChange={(e)=>{handledateofbirth(e)}}
             format='DD/MM/YYYY'
             size='large'/>
           </Form.Item>

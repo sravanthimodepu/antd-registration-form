@@ -386,13 +386,6 @@ const ThirdHolder = ({handleClick , step , stepsArray}) => {
               </Button>
               </div>
           </div>
-
-          <div className='flex justify-between gap-10'> 
-            <FormButtons
-            handleClick = {handleClick}
-            step = {step}
-            stepsArray = {stepsArray}/>
-    </div>
         </Form>
     </>
   )

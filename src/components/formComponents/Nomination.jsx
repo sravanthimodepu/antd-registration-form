@@ -111,7 +111,7 @@ const Nomination = ({handleClick, step, stepsArray}) => {
           </Form.Item>
 
           <Form.Item
-          label={<span className='text-white'>Nominee RelationShip</span>}
+          label={<span className='text-white'>Nominee Relation</span>}
           
         className='relative w-full'
         name='nomination_relationship'
@@ -190,7 +190,7 @@ const Nomination = ({handleClick, step, stepsArray}) => {
             <Input
           prefix = {<BsPerson className=' text-green-500 text-xl'/>}	
           size='large'
-          placeholder = "Gaurdian Name"
+          placeholder = "Guardian Name"
           onChange={(e) => {nomination.guardianName = e.target.value}}
           allowClear
           />
@@ -200,7 +200,7 @@ const Nomination = ({handleClick, step, stepsArray}) => {
           <Form.Item
            className='relative w-full'
            name='nomination_guardianPan'
-          label={<span className='text-white'>Gaurdian Pan</span>}
+          label={<span className='text-white'>Guardian Pan</span>}
            rules={[
              {
                required: true,

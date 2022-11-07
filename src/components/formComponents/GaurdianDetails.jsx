@@ -127,7 +127,6 @@ const GaurdianDetails = ({handleClick , step , stepsArray}) => {
           <Form.Item
           label={<span className='text-white'>Date Of Birth Attached?</span>}
           className='relative w-full '
-
           name='guardianDetails_dobAttached'
           >
                <Switch
@@ -155,7 +154,7 @@ const GaurdianDetails = ({handleClick , step , stepsArray}) => {
           showSearch
           placeholder = {<div className='flex gap-1 justify-start'>
           <BsPersonPlus className=' text-green-500 text-xl mt-3 '/>
-          <span>Gaurdian Relationship</span>
+          <span>Guardian Relationship</span>
           </div>
           }
           size='large'

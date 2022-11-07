@@ -47,11 +47,6 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
         className='relative w-full'
         name='secondHolder_salutation'
         rules={[
-          {
-            required: true,
-            message: 'Please select your Salutation',
-            
-          },
         ]}>
           <Select
           optionLabelProp='label'
@@ -96,9 +91,9 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
             value="Prof">Prof</Select.Option>
             <Select.Option label = {<div className='flex gap-1 justify-start'>
                                      <ImProfile className=' text-green-500 text-xl mt-3 '/>
-                                    <span>Captian</span>
+                                    <span>Captain</span>
                                     </div>}
-            value="Captian">Captian</Select.Option>
+            value="Captian">Captain</Select.Option>
 
           </Select>
           
@@ -109,10 +104,6 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
            className='relative w-full'
            name='secondHolder_firstName'
            rules={[
-            {
-              required: true,
-              message: 'Please input your First Name',
-             },
              {
               min: 3,
               message: 'Minimum 3 characters required',
@@ -170,10 +161,6 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
            className='relative w-full'
            name='secondHolder_lastName'
            rules={[
-            {
-              required: true,
-              message: 'Please input your Last Name',
-             },
              {
               min: 3,
               message: 'Minimum 3 characters required',
@@ -201,12 +188,7 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
           label={<span className='text-white'>Gender</span>}
             className='relative w-full'
             name='secondHolder_gender'
-            rules={[
-              {
-                required: true,
-                message: 'Please select Gender'
-              },
-            ]}>
+            >
           
           
           <Select
@@ -253,11 +235,6 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
            
            rules={[
              {
-               required: true,
-               message: 'Please input your PAN!',
-               
-             },
-             {
               pattern: /^[a-zA-Z]{3}[p|P|c|C|h|H|f|F|a|A|t|T|b|B|l|L|j|J|g|G][A-Za-z][\d]{4}[A-Za-z]$/,
               message: 'Invalid PAN',
              }
@@ -279,10 +256,6 @@ const SecondHolder = ({handleClick , step , stepsArray}) => {
           className='relative w-full'
           name='secondHolder_ckyc'
           rules={[
-            {
-              required: true,
-              message: 'Please input CKYC Number',
-            },
             {
               pattern: /^[0-9]+$/,
               message: "only numbers allowed"

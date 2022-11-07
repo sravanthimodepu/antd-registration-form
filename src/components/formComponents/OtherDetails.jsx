@@ -93,10 +93,12 @@ const {formData , setFormData} = useStateContext()
         rules={[
           {
             required: true,
+            message: 'Please enter the Net Worth',
           },
         ]}
         >
           <Input
+            type='number'
             prefix = {<MdOutlineFormatListNumbered className=' text-green-500 text-xl'/>}
             size='large'
             placeholder = "Enter Net Worth"
@@ -132,14 +134,10 @@ const {formData , setFormData} = useStateContext()
       label={<span className='text-white'>Politically Exposed ? </span>}
       name='otherDetails_politicallyExposed'
       className='relative w-full'
-      rules={[
-        {
-          required: true,
-          message: 'Please select an option',
-        }
-      ]}
+
       >
         <Switch
+        defaultChecked = {otherDetails.politicallyExposed}
         onChange={(e)=>{ otherDetails.politicallyExposed = e}}
         checkedChildren= "Yes" unCheckedChildren="No"/>
 

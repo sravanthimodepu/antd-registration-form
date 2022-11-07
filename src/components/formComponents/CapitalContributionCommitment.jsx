@@ -1,4 +1,4 @@
-import React  from 'react'
+import React , {useState} from 'react'
 import axios from 'axios';
 import {Form , Button , Select , DatePicker , Input, InputNumber} from 'antd';
 import { useStateContext } from '../../contexts/ContextProvider';
@@ -8,9 +8,11 @@ import {IoCashOutline} from 'react-icons/io5'
 import {MdOutlineFormatListNumbered} from 'react-icons/md'
 
 
+
 import { FormButtons} from './index'
 
 const CapitalContributionCommitment = ({handleClick, step, stepsArray}) => {
+  const [amtInWords, setAmtInWords] = useState(false);
 
 
   const {formData , setFormData} = useStateContext()
@@ -51,6 +53,18 @@ const CapitalContributionCommitment = ({handleClick, step, stepsArray}) => {
   }
 }
 
+  const amountToWords = (e)=>{
+    capitalContributionCommitment.commitment = e.target.value;
+    const numWords = require('num-words');
+    const amountInWords = numWords(e.target.value);
+    setTimeout(()=>{
+    capitalContributionCommitment.amountInWords = amountInWords;
+      setAmtInWords(true);
+      form.setFieldsValue({
+        capitalContributionCommitment_amountInWords : capitalContributionCommitment.amountInWords
+      })
+    },1000);
+  }
 
 
   const onFinish = () => {
@@ -106,7 +120,7 @@ const CapitalContributionCommitment = ({handleClick, step, stepsArray}) => {
         type='number'
         size='large'
         placeholder='Commitment Amount'
-        onChange={(e) => {capitalContributionCommitment.commitment = e.target.value}}
+        onChange={(e) => {amountToWords(e)}}
         allowClear
         />
       </Form.Item>
@@ -114,7 +128,7 @@ const CapitalContributionCommitment = ({handleClick, step, stepsArray}) => {
 
 
       <Form.Item
-      label={<span className='text-white'>amount in words</span>}
+      label={<span className='text-white'> Amount in Words</span>}
       className='relative w-full'
       name="capitalContributionCommitment_amountInWords"
       rules={[
@@ -125,6 +139,7 @@ const CapitalContributionCommitment = ({handleClick, step, stepsArray}) => {
           
       ]}>
         <Input
+        disabled = {amtInWords}
         prefix = {<GiCash className=' text-green-500 text-xl'/>}	
         size='large'
         placeholder='Commitment Amount in words'
@@ -267,14 +282,6 @@ const CapitalContributionCommitment = ({handleClick, step, stepsArray}) => {
                                      <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
                                     <span>Current</span>
                                     </div>}>Current</Select.Option>
-          <Select.Option value='Recurring' label={<div className='flex gap-1 justify-start'>
-                                     <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
-                                    <span>Recurring</span>
-                                    </div>}>Recurring</Select.Option>
-          <Select.Option value='Fixed' label={<div className='flex gap-1 justify-start'>
-                                     <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
-                                    <span>Fixed</span>
-                                    </div>}>Fixed</Select.Option>
           <Select.Option value='NRE' label={<div className='flex gap-1 justify-start'>
                                      <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
                                     <span>NRE</span>
@@ -283,10 +290,6 @@ const CapitalContributionCommitment = ({handleClick, step, stepsArray}) => {
                                      <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
                                     <span>NRO</span>
                                     </div>}>NRO</Select.Option>
-          <Select.Option value='FCNR' label={<div className='flex gap-1 justify-start'>
-                                     <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
-                                    <span>FCNR</span>
-                                    </div>}>FCNR</Select.Option>
           <Select.Option value='Others' label={<div className='flex gap-1 justify-start'>
                                      <IoCashOutline className=' text-green-500 text-xl mt-3 '/>
                                     <span>Others</span>
@@ -309,6 +312,7 @@ const CapitalContributionCommitment = ({handleClick, step, stepsArray}) => {
         ]}
         >
           <Input
+            maxLength={18}
             prefix = {<MdOutlineFormatListNumbered className=' text-green-500 text-xl'/>}
             size='large'
             placeholder = "Enter Account Number"

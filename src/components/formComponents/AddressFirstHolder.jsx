@@ -278,6 +278,7 @@ const AddressFirstHolder = ({handleClick , step , stepsArray}) => {
           rules={[
             {
               required: true,
+              message: 'Please enter country',
             },
           ]}
           >
